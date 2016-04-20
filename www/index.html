@@ -59,9 +59,11 @@
 										<ionic-item> Sub totals: {{ticket.totals.sub_total}}</ionic-item>
 										<br/>
 										<ionic-item> Due: {{ticket.totals.due}}</ionic-item>
+										</br>
+										</br>
+										<button ng-controller="orderController" class="button button-positive" ng-click="showorders(ticket.id)">View orders</button>
 										<br/>
 										<br/>
-										<button class="button button-positive" ng-click="place_order(ticket.id)"> Place order</button>
 									</ion-list>
 								</ion-item>
 							</ion-list>
