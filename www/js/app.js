@@ -5,7 +5,29 @@
 // the 2nd parameter is an array of 'requires'
 
 
-var app = angular.module("todo", ['ionic']);
+var app = angular.module('myApp', ['ngRoute', 'ionic']);
+
+app.config(['$routeProvider' ,function ($routeProvider) {
+    'use strict';
+    console.log("getting here");
+    // route for the home page
+    $routeProvider
+    .when('/', {
+      templateUrl : 'js/views/home.html',
+      controller  : 'mainController'
+    })
+    .when('/order', {
+      templateUrl : 'js/views/order.html',
+      controller  : 'orderController'
+    })
+
+    // route for the contact page
+    .otherwise({
+      redirectTo: 'js/views/home.html'
+    });
+}]);
+
+
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
