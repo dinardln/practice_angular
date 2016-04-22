@@ -1,0 +1,46 @@
+app.controller('orderController', ['$scope', '$routeParams', '$http','$window', function($scope, $routeParams, $http, $window) {
+	$scope.ticket_id = $routeParams.orderId;
+    apiKey = "0b94a8f976834586b839c521d22666b3";
+    $scope.show_orders = function() {
+    	$http({
+			cache: false,
+			url: 'https://api.omnivore.io/0.1/locations/yiKpK5Bi/tickets/'+$scope.ticket_id+'/items',
+			method: "GET",
+			headers: {'Api-Key' : apiKey },
+		}).success(function(data) { 
+          	$scope.items = data._embedded.items;
+          	console.log(data._embedded.items);
+        }).error(function(err) { 
+              return err; 
+        });  
+    }
+
+    $scope.place_order = function(order_id) {
+
+    	$http.get('https://api.omnivore.io/0.1/locations/yiKpK5Bi/menu/items/'+order_id , {headers:{'Api-Key' : apiKey }}).success(function(data) { 
+              $scope.item_info = data;
+              console.log(data);
+              $http({
+				cache: false,
+				url: 'https://api.omnivore.io/0.1/locations/yiKpK5Bi/tickets/'+$scope.ticket_id+'/items',
+				method: "POST",
+				headers: {'Api-Key' : apiKey },
+				data: {"menu_item": order_id, "quantity": 1, "price_level": $scope.item_info.price_levels[0].id, "comment":"tanner is GAHHHHH" , "modifiers":[]}
+			}).success(function(data) {
+				console.log(data); 
+	          $scope.items.push(data); 
+	        }).error(function(err) { 
+	              return err; 
+	        }); 
+        }) 
+        .error(function(err) { 
+          return err; 
+        }); 
+    	
+    }
+    $scope.show_orders();
+    
+
+
+     
+}]);

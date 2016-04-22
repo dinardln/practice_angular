@@ -1,17 +1,36 @@
-<div ng-controller="orderController">
+<ion-content>
 	<h2> Your Order Currently Consists of </h2>
 	<ion-list>
-		<ion-item ng-repeat="item in itemss">
-		<strong><h2> Item: {{item.id}} </h2></strong>
+		<ion-item ng-repeat="item in items">
+			<ion-list>
+				<ionic-item> Order Type: {{item.name}}</ionic-item>
+				<br/>
+				<ionic-item> Order Id: {{item.id}}</ionic-item>
+				<br/>
+				<ionic-item> Price: {{item.price_per_unit}}</ionic-item>
+				<br/>
+				<ionic-item> Quantity ordered: {{item.quantity}}</ionic-item>
+				<br/>
+				<ionic-item> Order Comment: {{item.comment}}</ionic-item>
+				<br/>
+				<a href="">Modify Order</a> 
+				<a href="">Pay for Order</a> 
+			</ion-list>
+		</ion-item>
 	</ion-list>
 	</br>
 	</br>
 	<h2> Items for sale </h2>
-	<div class="row">
-	  <button ng-controller="orderController" ng-click="placeorder(gkc8bca9)" class="col"> Poblano Picasso Burger</button>
-	  <button ng-click="placeorder(recb5cKX)" class="col"> Mozzarella Sticks</button>
-	  <button ng-click="placeorder(GyiKLiLo)" class="col"> Chips and Salsa</button>
-	  <button ng-click="placeorder(gki84ia9)" class="col"> Soda</button>
-	</div>
-	<button ng-controller="orderController" class="button button-positive" ng-click="placeorder(ticket.id)">Place order</button>
-</div>
+	<button ng-click="place_order('gkc8bca9')" class="button button-positive" > Poblano Picasso Burger</button>
+	</br>
+	</br>
+	<button ng-click="place_order('recb5cKX')" class="button button-positive"> Mozzarella Sticks</button>
+	</br>
+	</br>
+	<button ng-click="place_order('GyiKLiLo')" class="button button-positive"> Chips and Salsa</button>
+	</br>
+	</br>
+	<button ng-click="place_order('gki84ia9')" class="button button-positive"> Soda</button>
+	</br>
+	</br>
+</ion-content>

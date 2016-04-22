@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<title>Todo</title>
+		<title>myApp</title>
 
 		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
@@ -14,69 +13,20 @@
 
 		<!-- ionic/angularjs js -->
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
-
+		<script src="lib/ionic/js/angular/angular-resource.min.js"></script>
+		<script src="angular-route.js"></script>
+	
 		<!-- cordova script (this will be a 404 during development) -->
 		<script src="cordova.js"></script>
 
 		
 	</head>
-	<body ng-app="todo" ng-app="NewApp">
-		<ion-side-menus ng-controller="mainController">
+	<body ng-app="myApp">
 
-			<!-- Center content -->
-			<ion-side-menu-content>
-				<ion-header-bar class="bar-dark">
-					<h1 class="title">Open Ticket</h1>
-				</ion-header-bar>
-				<ion-content>
-				<div class="list" >
-					<label class="item item-input">
-						<input type="text" ng-model="ticket.employee_id" placeholder="Employee Id">
-					</label>
-					<label class="item item-input">
-						<input type="text" ng-model="ticket.order_type" placeholder="Order Type Id">
-					</label>
-					<label class="item item-input">
-						<input type="text" ng-model="ticket.revenue_center" placeholder="Revenue Center Id">
-					</label>
-					<button type="submit" ng-click="update(ticket)" class="btn btn-embossed btn-danger">Submit Ticket</button>
-				</div>
-					<!-- our list and list items -->
-					<ion-list>
-						<ion-item ng-repeat="ticket in tickets">
-							<ion-list>
-								<strong><h2> Ticket Name {{ticket.name}} </h2></strong>
-								<ion-item> Ticket was Opened at {{ticket.opened_at}}</ion-item>
-								<ion-item>Ticket id is {{ticket.id}}</ion-item>
-								<ion-item>
-									<ion-list>
-										<ionic-item> Other charges: {{ticket.totals.other_charges}}</ionic-item>
-										<br/>
-										<ionic-item> Service: {{ticket.totals.service_charges}}</ionic-item>
-										<br/>
-										<ionic-item> Totals: {{ticket.totals.total}}</ionic-item>
-										<br/>
-										<ionic-item> Sub totals: {{ticket.totals.sub_total}}</ionic-item>
-										<br/>
-										<ionic-item> Due: {{ticket.totals.due}}</ionic-item>
-										</br>
-										</br>
-										<button ng-controller="orderController" class="button button-positive" ng-click="showorders(ticket.id)">View orders</button>
-										<br/>
-										<br/>
-									</ion-list>
-								</ion-item>
-							</ion-list>
-						</ion-item>
-					</ion-list>
-
-				</ion-content>
-			</ion-side-menu-content>
-
-		</ion-side-menus>
+		<div ng-view></div>
 		<!-- your app's js -->
 		<script src="js/app.js"></script>
 		<script src="js/controllers/mainController.js"></script>
-		<script src="js/services/get_ticket.js"></script>
+		<script src="js/controllers/orderController.js"></script>
 	</body>
 </html>
