@@ -9,7 +9,6 @@ var app = angular.module('myApp', ['ngRoute', 'ionic']);
 
 app.config(['$routeProvider' ,function ($routeProvider) {
     'use strict';
-    console.log("getting here");
     // route for the home page
     $routeProvider
     .when('/', {
