@@ -11,9 +11,12 @@ app.controller('mainController', ['$scope', '$http' ,'$window', function($scope,
 			data: {"employee": ticket.employee_id, "order_type": ticket.order_type, "revenue_center": ticket.revenue_center, "guest_count": 2, "name": $scope.num_tickets.toString(), "auto_send": false }
 		}).success(function(data) { 
 		  $scope.show_tickets();
+		  $scope.hasError = false;
+		  $scope.errorText = "";
 		  $window.location.href = "#showtickets";
 		}).error(function(err) { 
-		    return err; 
+			$scope.hasError = true;
+            $scope.errorText = "Invalid Employee Id, Order Type Id, or Revenue Center Id";
 		}); 
 	};
 
