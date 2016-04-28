@@ -25,10 +25,11 @@ app.controller('orderController', ['$scope', '$routeParams', '$http','$window', 
 				url: 'https://api.omnivore.io/0.1/locations/yiKpK5Bi/tickets/'+$scope.ticket_id+'/items',
 				method: "POST",
 				headers: {'Api-Key' : apiKey },
-				data: {"menu_item": order_id, "quantity": 1, "price_level": $scope.item_info.price_levels[0].id, "comment":"tanner is GAHHHHH" , "modifiers":[]}
+				data: {"menu_item": order_id, "quantity": 1, "price_level": $scope.item_info.price_levels[0].id, "comment": "order of" + $scope.item_info.name , "modifiers":[]}
 			}).success(function(data) {
 				console.log(data); 
-	          $scope.items.push(data); 
+	          $scope.items.push(data);
+            $scope.show_orders(); 
 	        }).error(function(err) { 
 	              return err; 
 	        }); 

@@ -13,7 +13,15 @@ app.config(['$routeProvider' ,function ($routeProvider) {
     // route for the home page
     $routeProvider
     .when('/', {
-      templateUrl : 'js/views/home.html',
+      templateUrl : 'js/views/openticket.html',
+      controller  : 'mainController'
+    })
+    .when('/openticket', {
+      templateUrl : 'js/views/openticket.html',
+      controller  : 'mainController'
+    })
+    .when('/showtickets', {
+      templateUrl : 'js/views/showtickets.html',
       controller  : 'mainController'
     })
     .when('/order/:orderId', {

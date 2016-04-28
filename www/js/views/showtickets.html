@@ -1,0 +1,30 @@
+<ion-content>
+	<!-- our list and list items -->
+	<ion-list>
+		<ion-item ng-repeat="ticket in tickets">
+			<ion-list>
+				<strong><h2> Ticket Name {{ticket.name}} </h2></strong>
+				<ion-item> Ticket was Opened at {{ticket.opened_at}}</ion-item>
+				<ion-item>Ticket id is {{ticket.id}}</ion-item>
+				<ion-item>
+					<ion-list>
+						<ionic-item> Other charges: {{ticket.totals.other_charges}}</ionic-item>
+						<br/>
+						<ionic-item> Service: {{ticket.totals.service_charges}}</ionic-item>
+						<br/>
+						<ionic-item> Totals: {{ticket.totals.total}}</ionic-item>
+						<br/>
+						<ionic-item> Sub totals: {{ticket.totals.sub_total}}</ionic-item>
+						<br/>
+						<ionic-item> Due: {{ticket.totals.due}}</ionic-item>
+						<br/>
+						<br/>
+						<a href="#order/{{ticket.id}}">Place order</a> 
+						</br>
+						<button ng-click="close_order(ticket.id)"> Close Order</button>
+					</ion-list>
+				</ion-item>
+			</ion-list>
+		</ion-item>
+	</ion-list>
+</ion-content>

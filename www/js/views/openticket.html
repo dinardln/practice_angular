@@ -1,0 +1,21 @@
+<ion-side-menus ng-controller="mainController">
+
+	<!-- Center content -->
+	<ion-side-menu-content>
+		<ion-content>
+		<div class="list" >
+			<label class="item item-input">
+				<input type="text" ng-model="ticket.employee_id" placeholder="Employee Id" required/>
+			</label>
+			<label class="item item-input">
+				<input type="text" ng-model="ticket.order_type" placeholder="Order Type Id" required/>
+			</label>
+			<label class="item item-input">
+				<input type="text" ng-model="ticket.revenue_center" placeholder="Revenue Center Id" required/>
+			</label>
+			<button type="submit" ng-click="open_ticket(ticket)" disabled="if(!ticket.employee_id)" class="btn btn-embossed btn-danger">Submit Ticket</button>
+		</div>
+		</ion-content>
+	</ion-side-menu-content>
+
+</ion-side-menus>
