@@ -23,8 +23,16 @@ app.config(['$routeProvider' ,function ($routeProvider) {
       templateUrl : 'js/views/showtickets.html',
       controller  : 'mainController'
     })
-    .when('/order/:orderId', {
-      templateUrl : 'js/views/order.html',
+    .when('/order/:ticketId', {
+      templateUrl : 'js/views/placeorder.html',
+      controller  : 'orderController'
+    })
+    .when('/placeorder/:ticketId', {
+      templateUrl : 'js/views/placeorder.html',
+      controller  : 'orderController'
+    })
+    .when('/showorders/:ticketId', {
+      templateUrl : 'js/views/showorder.html',
       controller  : 'orderController'
     })
     // route for the contact page
