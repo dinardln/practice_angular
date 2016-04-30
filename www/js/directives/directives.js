@@ -13,7 +13,7 @@ app.directive('orderNav', function() {
   	scope: true,
 	restrict: 'E', 
 	scope: { 
-	  info: '=' 
+	  ticket: '=' 
 	}, 
 	templateUrl: 'js/directives/orderNav.html' 
   }; 

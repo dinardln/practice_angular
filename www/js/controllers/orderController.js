@@ -8,6 +8,7 @@ app.controller('orderController', ['$scope', '$routeParams', '$http','$window', 
 			method: "GET",
 			headers: {'Api-Key' : apiKey },
 		}).success(function(data) { 
+            console.log($scope.ticket_id);
           	$scope.items = data._embedded.items;
         }).error(function(err) { 
               return err; 
@@ -15,7 +16,6 @@ app.controller('orderController', ['$scope', '$routeParams', '$http','$window', 
     }
 
     $scope.place_order = function(order_id) {
-      console.log($scope.ticket_id);
     	$http.get('https://api.omnivore.io/0.1/locations/yiKpK5Bi/menu/items/'+order_id , {headers:{'Api-Key' : apiKey }}).success(function(data) { 
               $scope.item_info = data;
               $http({
